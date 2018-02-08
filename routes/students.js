@@ -15,18 +15,17 @@ router.get('/:studentId', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  Students.create(req.body);
-  res.status(201).json(Students.findAll());
+  res.status(201).json(Students.create(req.body));
 });
 
 router.put('/:id', function(req, res, next) {
-  Students.update(req.body, req.params.id);
-  res.status(203).json(Students.findAll());
+  if (!Students.destroy(req.params.id)) return res.sendStatus(404);
+  res.status(203).json(Students.update(req.body, req.params.id));
 });
 
 router.delete('/:id', function(req, res, next) {
-  Students.destroy(req.params.id);
-  res.json(Students.findAll());
+  if (!Students.destroy(req.params.id)) return res.sendStatus(404);
+  res.json(Students.destroy(req.params.id));
 });
 
  module.exports = router;

@@ -17,21 +17,29 @@ const Students = {
       lastName: 'Bartik'
     }
   ],
-  findAll: function () {
+  findAll: function() {
     return this.students;
   },
-  create: function (student) {
+  create: function(student) {
     student.id = ++this.idIncrementor;
     this.students.push(student);
+    return this.students;
   },
-  destroy: function (id) {
-    this.students = this.students.filter(student => student.id !== +id);
+  destroy: function(id) {
+    if (this.students.find(student => student.id === +id)) {
+      return this.students.filter(student => student.id !== +id);
+    }
+    return undefined;
   },
-  findById: function (id) {
+  findById: function(id) {
     return this.students.find(student => student.id === +id);
   },
-  update: function (studentUpdate, id) {
-    this.students[+id - 1] = Object.assign({}, this.students[+id - 1], studentUpdate);
+  update: function(studentUpdate, id) {
+    if (this.students.find(student => student.id === +id)) {
+      this.students[+id - 1] = Object.assign({}, this.students[+id - 1], studentUpdate);
+      return this.students;
+    }
+    return undefined;
   }
 };
 

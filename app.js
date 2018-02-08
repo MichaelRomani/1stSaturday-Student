@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const Student = require('./routes/students');
 const Test = require('./routes/tests');
-
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));

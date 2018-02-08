@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Test = require('../Tests');
+const Test = require('../db/Tests');
 
 //Get all tests
 router.get('/', function(req, res, next) {

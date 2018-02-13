@@ -3,6 +3,7 @@ const Students = require('../db/students');
 
 //Get all students
 router.get('/', function(req, res, next) {
+  console.log('in here')
   res.json(Students.findAll())
 });
 

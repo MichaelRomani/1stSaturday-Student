@@ -24,7 +24,6 @@ router.get('/subject/:subject', function(req, res, next) {
 });
 
 //Create a new test and send status of 201
-//the request body will look like {subject: 'some subject', grade: someinteger}
 router.post('/', function(req, res, next) {
   res.status(201).json(Test.create(req.body));
 });
@@ -32,7 +31,6 @@ router.post('/', function(req, res, next) {
 //Delete a test
 router.delete('/:id', function(req, res, next) {
   if (!Test.destroy(req.params.id)) return res.sendStatus(404);
-  // console.log(Test.destroy(req.params.id), 'what are you')
   res.json(Test.destroy(req.params.id));
 });
 

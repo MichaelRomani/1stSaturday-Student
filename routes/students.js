@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:studentId', function(req, res, next) {
-  if(Students.findById(req.params.studentId) === undefined) {
+  if (Students.findById(req.params.studentId) === undefined) {
     res.sendStatus(404);
   }
   else {
